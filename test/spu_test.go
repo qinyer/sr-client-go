@@ -2,8 +2,8 @@ package test
 
 import (
 	"fmt"
-	sr "sr-client-go"
-	"sr-client-go/models"
+	sr "github.com/qinyer/sr-client-go"
+	"github.com/qinyer/sr-client-go/models"
 	"testing"
 )
 

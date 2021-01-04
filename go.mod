@@ -1,4 +1,4 @@
-module sr_client_go
+module github.com/qinyer/sr-client-go
 
 go 1.15
 

@@ -1,6 +1,6 @@
 package models
 
-import "sr-client-go/utils"
+import "github.com/qinyer/sr-client-go/utils"
 
 // 数据源类型对照表
 // 每个接口上报数据前都需都添加一个数据仓库，每种数据源类型的数据仓库只可添加一次，该数据仓库在传输数据时可重复使用。

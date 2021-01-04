@@ -2,9 +2,9 @@ package api
 
 import (
 	"encoding/json"
-	"sr-client-go/context"
-	"sr-client-go/models"
-	"sr-client-go/utils"
+	"github.com/qinyer/sr-client-go/context"
+	"github.com/qinyer/sr-client-go/models"
+	"github.com/qinyer/sr-client-go/utils"
 )
 
 type Spu struct {

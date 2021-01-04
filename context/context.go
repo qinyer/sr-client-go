@@ -1,6 +1,6 @@
 package context
 
-import "sr-client-go/config"
+import "github.com/qinyer/sr-client-go/config"
 
 // Context
 type Context struct {

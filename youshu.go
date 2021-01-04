@@ -1,11 +1,11 @@
 package sr_client_go
 
 import (
+	"github.com/qinyer/sr-client-go/api"
+	"github.com/qinyer/sr-client-go/config"
+	"github.com/qinyer/sr-client-go/context"
 	"github.com/sirupsen/logrus"
 	"os"
-	"sr-client-go/api"
-	"sr-client-go/config"
-	"sr-client-go/context"
 )
 
 // init log
