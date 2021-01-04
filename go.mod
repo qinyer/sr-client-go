@@ -1,4 +1,4 @@
-module sr-client-go
+module sr_client_go
 
 go 1.15
 
