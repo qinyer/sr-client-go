@@ -15,9 +15,7 @@ type DataSource struct {
 
 // NewDataSource 获取数据仓库上报实例
 func NewDataSource(ctx *context.Context) *DataSource {
-	dataSource := new(DataSource)
-	dataSource.Context = ctx
-	return dataSource
+	return &DataSource{ctx}
 }
 
 // Add 添加数据仓库
@@ -26,7 +24,7 @@ func (ds *DataSource) Add(merchantId string, dataSourceType int) (dataSource mod
 		"merchantId":     merchantId,
 		"dataSourceType": dataSourceType,
 	}
-	response, err := utils.NewHttpClient(ds.AppId, ds.AppSecret, ds.Prod).HttpPostJson("/data_source/add", params)
+	response, err := utils.NewHttpClient(ds.Context).HttpPostJson("/data_source/add", params)
 	if err != nil {
 		return
 	}
@@ -42,7 +40,7 @@ func (ds *DataSource) Get(merchantId string, dataSourceType int) (dataSource mod
 	params := url.Values{}
 	params.Add("merchantId", merchantId)
 	params.Add("dataSourceType", strconv.Itoa(dataSourceType))
-	response, err := utils.NewHttpClient(ds.AppId, ds.AppSecret, ds.Prod).HttpGetJson("/data_source/get", params)
+	response, err := utils.NewHttpClient(ds.Context).HttpGetJson("/data_source/get", params)
 	if err != nil {
 		return
 	}

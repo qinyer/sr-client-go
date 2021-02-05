@@ -46,19 +46,19 @@ func TestStore(t *testing.T)  {
 						},
 					},
 				},
-				DeliveryInfo:          &models.DeliveryInfo{
-					RangeType: 3,
-					Radius:    "300km",
-					GeoGroup:  &[]models.GeoGroup{
-						models.GeoGroup{Geos: &[]models.GeoInfo{
-							models.GeoInfo{
-								Latitude:  26.075368,
-								Longitude: 119.329487,
-								Type:      1,
-							},
-						}},
-					},
-				},
+				//DeliveryInfo:          &models.DeliveryInfo{
+				//	RangeType: 3,
+				//	Radius:    "300km",
+				//	GeoGroup:  &[]models.GeoGroup{
+				//		models.GeoGroup{Geos: &[]models.GeoInfo{
+				//			models.GeoInfo{
+				//				Latitude:  26.075368,
+				//				Longitude: 119.329487,
+				//				Type:      1,
+				//			},
+				//		}},
+				//	},
+				//},
 			},
 		},
 	}

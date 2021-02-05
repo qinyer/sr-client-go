@@ -13,14 +13,12 @@ type Sku struct {
 
 // NewSku 获取商品sku上报实例
 func NewSku(ctx *context.Context) *Sku {
-	sku := new(Sku)
-	sku.Context = ctx
-	return sku
+	return &Sku{ctx}
 }
 
 // Add 添加/更新商品sku
 func (sku *Sku) Add(req *models.SkuReq) (res utils.ReportCommonRes, err error) {
-	response, err := utils.NewHttpClient(sku.AppId, sku.AppSecret, sku.Prod).HttpPostJson("/sku/add", req)
+	response, err := utils.NewHttpClient(sku.Context).HttpPostJson("/sku/add", req)
 	if err != nil {
 		return
 	}

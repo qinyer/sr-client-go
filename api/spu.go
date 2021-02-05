@@ -13,14 +13,12 @@ type Spu struct {
 
 // NewSpu 获取商品spu上报实例
 func NewSpu(ctx *context.Context) *Spu {
-	spu := new(Spu)
-	spu.Context = ctx
-	return spu
+	return &Spu{ctx}
 }
 
 // Add 添加/更新商品spu
 func (spu *Spu) Add(req *models.SpuReq) (res utils.ReportCommonRes, err error) {
-	response, err := utils.NewHttpClient(spu.AppId, spu.AppSecret, spu.Prod).HttpPostJson("/spus/add", req)
+	response, err := utils.NewHttpClient(spu.Context).HttpPostJson("/spus/add", req)
 	if err != nil {
 		return
 	}

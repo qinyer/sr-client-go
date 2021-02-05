@@ -13,14 +13,12 @@ type ProductCategory struct {
 
 // NewProductCategory 获取商品类目上报实例
 func NewProductCategory(ctx *context.Context) *ProductCategory {
-	productCategory := new(ProductCategory)
-	productCategory.Context = ctx
-	return productCategory
+	return &ProductCategory{ctx}
 }
 
 // Add 添加/更新商品类目
 func (pc *ProductCategory) Add(req *models.ProductCategoriesReq) (res utils.ReportCommonRes, err error) {
-	response, err := utils.NewHttpClient(pc.AppId, pc.AppSecret, pc.Prod).HttpPostJson("/product_categories/add", req)
+	response, err := utils.NewHttpClient(pc.Context).HttpPostJson("/product_categories/add", req)
 	if err != nil {
 		return
 	}

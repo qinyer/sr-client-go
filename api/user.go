@@ -13,14 +13,12 @@ type User struct {
 
 // NewUser 获取会员信息上报实例
 func NewUser(ctx *context.Context) *User {
-	user := new(User)
-	user.Context = ctx
-	return user
+	return &User{ctx}
 }
 
 // Add 添加会员信息
 func (user *User) Add(req *models.UserReq) (res utils.ReportCommonRes, err error) {
-	response, err := utils.NewHttpClient(user.AppId, user.AppSecret, user.Prod).HttpPostJson("/user/add_user", req)
+	response, err := utils.NewHttpClient(user.Context).HttpPostJson("/user/add_user", req)
 	if err != nil {
 		return
 	}

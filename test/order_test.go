@@ -12,13 +12,13 @@ func TestOrder(t *testing.T) {
 		DataSourceId: "11258",
 		Orders: &[]models.Order{
 			models.Order{
-				ExternalOrderId:  "20201228112150001",
-				CreateTime:       "1609125710601",
+				ExternalOrderId:  "20201228112150003",
+				CreateTime:       "1609822981385",
 				OrderSource:      "wxapp",
 				OrderType:        1,
 				BrandId:          "B01",
 				BrandName:        "打卡呀服饰小商品",
-				GoodsNumTotal:    1,
+				GoodsNumTotal:    2,
 				GoodsWeight:      300.00,
 				GoodsAmountTotal: 99.00,
 				FreightAmount:    6.00,
@@ -33,7 +33,7 @@ func TestOrder(t *testing.T) {
 					UserPhone:          "13647623697",
 					UserId:             "U001",
 					MemberId:           "M0001",
-					UserFirstOrderTime: "1609125710601",
+					UserFirstOrderTime: "1609822981385",
 				},
 				GoodsInfo: &[]models.GoodsInfo{
 					models.GoodsInfo{
@@ -47,7 +47,7 @@ func TestOrder(t *testing.T) {
 						SaleUnit:       "条",
 						CategoryId:     "C02",
 						CategoryName:   "服饰",
-						GoodsNum:       1,
+						GoodsNum:       2,
 						GoodsWeight:    300.00,
 						StoreInfo: &models.StoreInfo{
 							ExternalStoreId: "9L11",
@@ -125,7 +125,7 @@ func TestOrder(t *testing.T) {
 							ExpressCompanyCode: "10003",
 							ExpressCompanyName: "express-speed",
 							ExpressCode:        "288383838",
-							ShipTime:           "1572395131732",
+							ShipTime:           "1609822981385",
 							ExpressPage: &models.ExpressPage{
 								MiniprogramPath:  "page/index/index",
 								MiniprogramAppid: "wxc8f3e27b33ae9e8e",

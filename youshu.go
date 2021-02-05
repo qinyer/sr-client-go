@@ -4,22 +4,10 @@ import (
 	"github.com/qinyer/sr-client-go/api"
 	"github.com/qinyer/sr-client-go/config"
 	"github.com/qinyer/sr-client-go/context"
+	"github.com/qinyer/sr-client-go/utils"
 	"github.com/sirupsen/logrus"
 	"os"
 )
-
-// init log
-func init() {
-	// Log as JSON instead of the default ASCII formatter.
-	logrus.SetFormatter(&logrus.TextFormatter{})
-
-	// Output to stdout instead of the default stderr
-	// Can be any io.Writer, see below for File example
-	logrus.SetOutput(os.Stdout)
-
-	// Only log the warning severity or above.
-	logrus.SetLevel(logrus.DebugLevel)
-}
 
 // YouShu
 type YouShu struct {
@@ -28,10 +16,16 @@ type YouShu struct {
 
 // NewYouShuClient 获取有数上报实例
 func NewYouShuClient(cfg *config.YouShuConfig) *YouShu {
-	ctx := &context.Context{
+	return &YouShu{&context.Context{
 		YouShuConfig: cfg,
-	}
-	return &YouShu{ctx: ctx}
+		Logger: &logrus.Logger{
+			Out:          os.Stdout,
+			Formatter:    &utils.CustomerFormatter{Prefix: "youshu-backend"},
+			Level:        logrus.DebugLevel,
+			ExitFunc:     os.Exit,
+			ReportCaller: true,
+		},
+	}}
 }
 
 // DataSource 数据仓库

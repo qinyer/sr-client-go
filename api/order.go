@@ -13,14 +13,12 @@ type Order struct {
 
 // NewOrder 获取订单相关上报实例
 func NewOrder(ctx *context.Context) *Order {
-	order := new(Order)
-	order.Context = ctx
-	return order
+	return &Order{ctx}
 }
 
 // AddOrder 添加/更新订单
 func (order *Order) AddOrder(req *models.OrderReq) (res utils.ReportCommonRes, err error) {
-	response, err := utils.NewHttpClient(order.AppId, order.AppSecret, order.Prod).HttpPostJson("/order/add_order", req)
+	response, err := utils.NewHttpClient(order.Context).HttpPostJson("/order/add_order", req)
 	if err != nil {
 		return
 	}
@@ -33,7 +31,7 @@ func (order *Order) AddOrder(req *models.OrderReq) (res utils.ReportCommonRes, e
 
 // AddOrderSum 汇总订单
 func (order *Order) AddOrderSum(req *models.OrderSumReq) (res utils.ReportCommonRes, err error) {
-	response, err := utils.NewHttpClient(order.AppId, order.AppSecret, order.Prod).HttpPostJson("/order/add_order_sum", req)
+	response, err := utils.NewHttpClient(order.Context).HttpPostJson("/order/add_order_sum", req)
 	if err != nil {
 		return
 	}
@@ -46,7 +44,7 @@ func (order *Order) AddOrderSum(req *models.OrderSumReq) (res utils.ReportCommon
 
 // AddPromotion 添加/更新活动信息
 func (order *Order) AddPromotion(req *models.OrderPromotionReq) (res utils.ReportCommonRes, err error) {
-	response, err := utils.NewHttpClient(order.AppId, order.AppSecret, order.Prod).HttpPostJson("/order/add_promotion", req)
+	response, err := utils.NewHttpClient(order.Context).HttpPostJson("/order/add_promotion", req)
 	if err != nil {
 		return
 	}
@@ -59,7 +57,7 @@ func (order *Order) AddPromotion(req *models.OrderPromotionReq) (res utils.Repor
 
 // AddCoupon 添加/更新卡券信息
 func (order *Order) AddCoupon(req *models.OrderCouponReq) (res utils.ReportCommonRes, err error) {
-	response, err := utils.NewHttpClient(order.AppId, order.AppSecret, order.Prod).HttpPostJson("/order/add_coupon", req)
+	response, err := utils.NewHttpClient(order.Context).HttpPostJson("/order/add_coupon", req)
 	if err != nil {
 		return
 	}

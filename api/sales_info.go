@@ -13,14 +13,12 @@ type SalesInfo struct {
 
 // NewSalesInfo 获取销售信息上报实例
 func NewSalesInfo(ctx *context.Context) *SalesInfo {
-	salesInfo := new(SalesInfo)
-	salesInfo.Context = ctx
-	return salesInfo
+	return &SalesInfo{ctx}
 }
 
 // Add 添加/更新销售信息
 func (ss *SalesInfo) Add(req *models.SalesInfoReq) (res utils.ReportCommonRes, err error) {
-	response, err := utils.NewHttpClient(ss.AppId, ss.AppSecret, ss.Prod).HttpPostJson("/salesinfo/add", req)
+	response, err := utils.NewHttpClient(ss.Context).HttpPostJson("/salesinfo/add", req)
 	if err != nil {
 		return
 	}
