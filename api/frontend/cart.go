@@ -18,7 +18,7 @@ func NewCart(ctx *context.Context) *Cart {
 
 // Report 商品加购上报
 func (c *Cart) Report(req *frontend.AddToCartReq) (res utils.ReportFrontendRes, err error) {
-	response, err := utils.NewFrontendHttpClient(c.Context).PostJson("", req)
+	response, err := utils.NewFrontendHttpClient(c.Context).PostJson("", []*frontend.AddToCartReq{req})
 	if err != nil {
 		return
 	}

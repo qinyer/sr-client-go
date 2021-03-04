@@ -18,7 +18,7 @@ func NewOrder(ctx *context.Context) *Order {
 
 // Report 订单行为上报
 func (c *Order) Report(req *frontend.CustomOrderReq) (res utils.ReportFrontendRes, err error) {
-	response, err := utils.NewFrontendHttpClient(c.Context).PostJson("", req)
+	response, err := utils.NewFrontendHttpClient(c.Context).PostJson("", []*frontend.CustomOrderReq{req})
 	if err != nil {
 		return
 	}

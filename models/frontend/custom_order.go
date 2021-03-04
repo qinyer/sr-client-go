@@ -1,18 +1,22 @@
 package frontend
 
 type CustomOrderReq struct {
-	Type  string           `json:"type"`
-	Props *CustomOrderProp `json:"props"`
+	Type       string           `json:"type"`
+	From       string           `json:"from"`
+	TrackingId string           `json:"tracking_id"`
+	LogId      int              `json:"log_id"`
+	Props      *CustomOrderProp `json:"props"`
 }
 
 type CustomOrderProp struct {
-	Page         string     `json:"page"`           //行为发生的小程序页面路径，开头不要加 /，路径后可带查询参数 例pages/product?sku_id=AOdjf7u
-	PageTitle    string     `json:"page_title"`     //行为发生的小程序页面标题 例商品详情、商城首页
-	SrSdkVersion string     `json:"sr_sdk_version"` //sdk版本号 例1.1.6
-	Time         string     `json:"time"`           //行为发生时间 13位时间戳 例1560409473714
-	WxUser       *WxUser    `json:"wx_user"`        //用户相关属性
-	Chan         *Chan      `json:"chan"`           //渠道相关属性
-	Component    *Component `json:"component"`      //组件是视图上的一个区块元素
+	Page           string     `json:"page"`       //行为发生的小程序页面路径，开头不要加 /，路径后可带查询参数 例pages/product?sku_id=AOdjf7u
+	PageTitle      string     `json:"page_title"` //行为发生的小程序页面标题 例商品详情、商城首页
+	IsSdkAutoTrack bool       `json:"is_sdk_auto_track"`
+	SrSdkVersion   string     `json:"sr_sdk_version"` //sdk版本号 例1.1.6
+	Time           string     `json:"time"`           //行为发生时间 13位时间戳 例1560409473714
+	WxUser         *WxUser    `json:"wx_user"`        //用户相关属性
+	Chan           *Chan      `json:"chan"`           //渠道相关属性
+	Component      *Component `json:"component"`      //组件是视图上的一个区块元素
 
 	Order     *Order      `json:"order"`      //用户订单信息
 	SubOrders *[]SubOrder `json:"sub_orders"` //订单的金额信息，注意为[]结构，

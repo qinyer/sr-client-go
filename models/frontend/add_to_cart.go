@@ -1,18 +1,22 @@
 package frontend
 
 type AddToCartReq struct {
-	Type  string          `json:"type"`
-	Props *AddToCartProps `json:"props"`
+	Type       string          `json:"type"`
+	From       string          `json:"from"`
+	TrackingId string          `json:"tracking_id"`
+	LogId      int             `json:"log_id"`
+	Props      *AddToCartProps `json:"props"`
 }
 
 type AddToCartProps struct {
-	Page         string     `json:"page"`                     //行为发生的小程序页面路径，开头不要加 /，路径后可带查询参数 例pages/product?sku_id=AOdjf7u
-	PageTitle    string     `json:"page_title,omitempty"`     //行为发生的小程序页面标题 例商品详情、商城首页
-	SrSdkVersion string     `json:"sr_sdk_version,omitempty"` //sdk版本号 例1.1.6
-	Time         string     `json:"time"`                     //行为发生时间 13位时间戳 例1560409473714
-	WxUser       *WxUser    `json:"wx_user"`                  //用户相关属性
-	Chan         *Chan      `json:"chan"`                     //渠道相关属性
-	Component    *Component `json:"component"`                //组件是视图上的一个区块元素
+	Page           string     `json:"page"`                     //行为发生的小程序页面路径，开头不要加 /，路径后可带查询参数 例pages/product?sku_id=AOdjf7u
+	PageTitle      string     `json:"page_title,omitempty"`     //行为发生的小程序页面标题 例商品详情、商城首页
+	SrSdkVersion   string     `json:"sr_sdk_version,omitempty"` //sdk版本号 例1.1.6
+	IsSdkAutoTrack bool       `json:"is_sdk_auto_track"`
+	Time           string     `json:"time"`      //行为发生时间 13位时间戳 例1560409473714
+	WxUser         *WxUser    `json:"wx_user"`   //用户相关属性
+	Chan           *Chan      `json:"chan"`      //渠道相关属性
+	Component      *Component `json:"component"` //组件是视图上的一个区块元素
 
 	ActionType   string         `json:"action_type"`             //动作类型 append_to_cart：商品详情页中点击加入购物车按钮；append_to_cart_in_cart：点击购物车加号；remove_from_cart：点击购物车减号或从购物车彻底删除
 	Sku          *Sku           `json:"sku"`                     //商品sku

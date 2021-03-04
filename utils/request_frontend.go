@@ -97,9 +97,10 @@ func (ys *YsFrontendHttp) PostJson(path string, params interface{}, headers ...m
 // getFullUrl 获取请求url
 func (ys *YsFrontendHttp) buildFrontendRequestUrl(reqUrl string) string {
 	// 请求时间戳（秒级）
-	timeLocation, _ := time.LoadLocation("Etc/GMT")
-	timestamp := time.Now().In(timeLocation).Unix()
-	// 随机字符串
-	nonce := RandomStr(32)
-	return fmt.Sprintf("%s%s?app_id=%s&nonce=%s&timestamp=%d", YsFrontendUrl, reqUrl, ys.ctx.AppId, nonce, timestamp)
+	//timeLocation, _ := time.LoadLocation("Etc/GMT")
+	//timestamp := time.Now().In(timeLocation).Unix()
+	//// 随机字符串
+	//nonce := RandomStr(32)
+	//return fmt.Sprintf("%s%s?app_id=%s&nonce=%s&timestamp=%d", YsFrontendUrl, reqUrl, ys.ctx.AppId, nonce, timestamp)
+	return fmt.Sprintf("%s%s?token=%s", YsFrontendUrl, reqUrl, ys.ctx.AppId)
 }
